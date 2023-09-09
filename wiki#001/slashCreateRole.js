@@ -1,6 +1,7 @@
 module.exports = [{
     name: "create role cmd",
     code: `
+$sendMessage[Created the slash command]
 $createApplicationCommand[$guildID;role;Role commands;true;slash;[
 {
     "name": "add",
