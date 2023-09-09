@@ -6,7 +6,7 @@ This is a wiki or snippet of the **role commands.** This included the following 
 - role info
 - role remove-all
 
-##Commands
+## Commands
 
 ### Role Add
 As the name implies, this is a slash command which adds role to the entered user along with extensive conditions to check role hierarchy, permission factors, etc.
