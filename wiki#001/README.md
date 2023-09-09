@@ -29,7 +29,11 @@ This is a slash command which removes **all roles from a selected user.** Yeah, 
 
 ![roleRemoveAll.js](https://cdn.discordapp.com/attachments/1149961478372347985/1149964783781691452/Screenshot_20230909_123902_Discord.jpg)
 
+
 **Note**: All the commands are accompanied with error checking and permission checks.
+
+### Slash Create
+I have also made the `$createApplicationCommand` to a normal prefix command and added to the repository. You can either do the same or use `$eval` ro eval the code and do the same. Also, just replace `$guildID` with `global` to create a global slash command.
 
 ## Credits 
 I will also extend my thanks to the following people who helped me here.
