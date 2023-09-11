@@ -29,6 +29,11 @@ This is a slash command which removes **all roles from a selected user.** Yeah, 
 
 ![roleRemoveAll.js](https://cdn.discordapp.com/attachments/1149961478372347985/1149964783781691452/Screenshot_20230909_123902_Discord.jpg)
 
+### Role Create
+This is a slash command which creates a role. This has options to enter name, color(hex value), hoist, mentionable. 
+
+![roleCreate.js](https://cdn.discordapp.com/attachments/1149961478372347985/1150605772141633566/Screenshot_20230911_070620_Discord.jpg)
+
 
 **Note**: All the commands are accompanied with error checking and permission checks.
 
@@ -39,5 +44,6 @@ I have also made the `$createApplicationCommand` to a normal prefix command and 
 I will also extend my thanks to the following people who helped me here.
 - ahoemi
 - SrPandi
+- fafa
 
 Thanks for reading!
