@@ -91,7 +91,7 @@ $onlyIf[$interactionData[options._subcommand]==create;]
 
 
 /*
-I have done this in discord.js since I thought this would be better suited in djs. You can do the same in aoi using $if: "old" but, I am not a fan of it.
+I have done this in discord.js since I thought this would be better suited in djs. You can do the same in aoi using $if: "old" but, I didn't use it.
 
 Also, i would like to extend my heartfelt thanks to @ahoemi and @fafa who helped me in this code.
 */
