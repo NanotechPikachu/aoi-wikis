@@ -85,6 +85,8 @@ $onlyClientPerms[manageroles;{newEmbed:{description:I do not have \`MANAGE_ROLES
 
 $onlyPerms[manageroles;{newEmbed:{description:You do not have \`MANAGE_ROLES\` permission}{color:Red}}{options:{ephemeral:true}}{extraOptions:{interaction:true}}]
 
+$suppressErrors[Something went wrong!{options:{ephemeral:true}}{extraOptions:{interaction:true}}]
+
 $onlyIf[$interactionData[options._subcommand]==create;]
 `
 }
