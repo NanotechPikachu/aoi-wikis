@@ -1,7 +1,7 @@
 module.exports = [{
     name: "create role cmd",
     code: `
-$sendMessage[Created the slash command]
+$sendMessage[created]
 $createApplicationCommand[$guildID;role;Role commands;true;slash;[
 {
     "name": "add",
@@ -61,6 +61,28 @@ $createApplicationCommand[$guildID;role;Role commands;true;slash;[
         "type": 6
     }
     ]
+}, {
+    "name": "create",
+    "description": "Creates a role.",
+    "type": 1,
+    "options": [{
+        "name": "name",
+        "description": "Name of the role.",
+        "required": true,
+        "type": 3
+    }, {
+        "name": "color",
+        "description": "Color of the role.",
+        "type": 3
+    }, {
+        "name": "hoist",
+        "description": "Wanna the role to be hoisted?",
+        "type": 5
+    }, {
+        "name": "mentionable",
+        "description": "Wanna role to be mentionable?",
+        "type": 5
+    }]
 }
 ]
 ]
