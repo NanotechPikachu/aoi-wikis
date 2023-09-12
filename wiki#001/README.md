@@ -5,6 +5,7 @@ This is a wiki or snippet of the **role commands.** This included the following 
 - role remove
 - role info
 - role remove-all
+- role create
 
 ## Commands
 Here are the information about the commands in it.
