@@ -13,4 +13,10 @@ I will just add the syntax and images as the others are self explanatory. It jus
 
 `(prefix) remind [time] [message you wanna be reminded]`
 
+| Option | Type | Example |
+| --- | --- | --- |
+| Time | Parsable Time | `1s/1m/1h/1d/1w` |
+| Message | String | Just a typical string |
+
+
 The syntax of time is like 1d/1w/1m etc with a maximum of 21 days.
