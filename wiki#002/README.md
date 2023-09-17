@@ -32,6 +32,7 @@ If you encounter any bugs or have any idea to be shared, feel free to DM me in d
 ## Credits
 I will also extend my credits to 
 - .god_of_water(Leeche)
-who told me to make this remind code. If he didn't, I wouldn't have probably made it. So, thanks to him.
+
+Who, told me to make this remind code. If he didn't, I wouldn't have probably made it. So, thanks to him.
 
 That's all then. C'ya!
