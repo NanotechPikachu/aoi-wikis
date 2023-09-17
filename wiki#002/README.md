@@ -9,7 +9,7 @@ Let's get to the command. See the `remind.js` code to see it.
 ### Remind
 I will just add the syntax and images as the others are self explanatory. It just DMs you on the time when you say it to be reminded.
 
-__Syntax__
+<u>Syntax</u>
 `(prefix) remind [time] [message you wanna be reminded]`
 
 The syntax of time is like 1d/1w/1m etc with a maximum of 21 days.
