@@ -24,3 +24,14 @@ The syntax of time is like 1d/1w/1m etc with a maximum of 21 days.
 ![remindCmd](https://cdn.discordapp.com/attachments/1149961478372347985/1152865015817322546/Screenshot_20230917_124116_Discord.jpg)
 
 ![remindDm](https://cdn.discordapp.com/attachments/1149961478372347985/1152865036218400829/Screenshot_20230917_124252_Discord.jpg)
+
+## Contact
+If you encounter any bugs or have any idea to be shared, feel free to DM me in discord and I will reply back to you as soon as I can.
+- @nanotechpikachu
+
+## Credits
+I will also extend my credits to 
+- .god_of_water(Leeche)
+who told me to make this remind code. If he didn't, I wouldn't have probably made it. So, thanks to him.
+
+That's all then. C'ya!
