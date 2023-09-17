@@ -20,3 +20,7 @@ I will just add the syntax and images as the others are self explanatory. It jus
 
 
 The syntax of time is like 1d/1w/1m etc with a maximum of 21 days.
+
+![remindCmd](https://cdn.discordapp.com/attachments/1149961478372347985/1152865015817322546/Screenshot_20230917_124116_Discord.jpg)
+
+![remindDm](https://cdn.discordapp.com/attachments/1149961478372347985/1152865036218400829/Screenshot_20230917_124252_Discord.jpg)
