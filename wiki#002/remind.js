@@ -22,7 +22,7 @@ $onlyIf[$message[1]!=;{newEmbed:{description:Enter a valid time.}{color:Red}}]
     type: "timeout",
     code: `
 
-$sendDM[{newEmbed:{description:Reminder for: $timeoutData[msg].\nYou set the reminder on <t:$timeoutData[time]:f> on $timeoutData[guild]\n**Message link:** $timeoutData[link]}{color:Random}};$timeoutData[author]]
+$sendDM[{newEmbed:{description:Reminder for: $timeoutData[msg].\nYou set the reminder at <t:$timeoutData[time]:f> on $timeoutData[guild]\n**Message link:** $timeoutData[link]}{color:Random}};$timeoutData[author]]
 
 `
 }]
