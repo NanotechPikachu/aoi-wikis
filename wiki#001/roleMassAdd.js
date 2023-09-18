@@ -65,3 +65,10 @@ $suppressErrors[Something went wrong!{options:{ephemeral:true}}{extraOptions:{in
 $onlyIf[$interactionData[options._subcommand]==mass-add;]
 `
 }]
+
+/*
+SOME IMPORTANT INFOS.
+
+I am not a djs coder hence, the code may look little primitive or unconventional but, I can guarantee you 99% that it works. I have tested it around 50 times and it worked(though I got yelled by testing server mates for spam messages). 
+
+The code doesn't count whether you have the role or not. For example, you wanna mass add a role named "X" and 5 out of 20 people in server has the role and 2 have role higher than bot, then it will say 
