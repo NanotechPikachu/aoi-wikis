@@ -1,4 +1,4 @@
-# Wiki #NP001 - Role Commands
+# Wiki #NP001 - Role Commands(Slash)
 
 This is a wiki or snippet of the **role commands.** This included the following commands under it which are all **slash commands**.
 - role add
@@ -54,5 +54,6 @@ I will also extend my thanks to the following people who helped me here.
 - ahoemi
 - SrPandi
 - fafa
+- shadowvirtual
 
 Thanks for reading!
