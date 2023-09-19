@@ -83,6 +83,16 @@ $createApplicationCommand[$guildID;role;Role commands;true;slash;[
         "description": "Wanna role to be mentionable?",
         "type": 5
     }]
+}, {
+    "name": "mass-add",
+    "description": "Adds a role to all possible members of the guild.",
+    "type": 1,
+    "options": [{
+        "name": "role",
+        "description": "The role which you wanna mass add.",
+        "required": true,
+        "type": 8
+    }]
 }
 ]
 ]
