@@ -40,9 +40,7 @@ This is a slash command which creates a role. This has options to enter name, co
 ### Role Mass-Add
 As the name implies, it's a slash command which adds a role to all the members of a guild(subjective to conditions like role hierarchy, etc). The code comes with extensive error handlers and other things like role position checker, admin permission check, permission check, etc.
 
-_(Do check the commentted out portion of the code file as it contains important information.)_
-
-![roleMassAdd.js](https://cdn.discordapp.com/attachments/1149961478372347985/1153328507494080593/Screenshot_20230918_192529_Discord.jpg)
+![roleMassAdd.js](https://cdn.discordapp.com/attachments/1149961478372347985/1157677148363046963/Screenshot_20230930_192524_Discord.jpg)
 
 ## Role Mass-Remove
 This is a slash command which removes a role from all the members of a guild excluding members who doesn't have the role and bots. This also checks if members have role and is bot and returns reply as such.
