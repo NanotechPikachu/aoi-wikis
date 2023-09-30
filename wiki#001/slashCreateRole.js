@@ -93,6 +93,16 @@ $createApplicationCommand[$guildID;role;Role commands;true;slash;[
         "required": true,
         "type": 8
     }]
+}, {
+    "name": "mass-remove",
+    "description": "Removes a role from all the members of the guild.",
+    "type": 1,
+    "options": [{
+        "name": "role",
+        "description": "The role which you wanna mass remove.",
+        "required": true,
+        "type": 8
+    }]
 }
 ]
 ]
