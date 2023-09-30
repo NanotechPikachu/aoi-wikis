@@ -42,7 +42,7 @@ As the name implies, it's a slash command which adds a role to all the members o
 
 ![roleMassAdd.js](https://cdn.discordapp.com/attachments/1149961478372347985/1157677148363046963/Screenshot_20230930_192524_Discord.jpg)
 
-## Role Mass-Remove
+### Role Mass-Remove
 This is a slash command which removes a role from all the members of a guild excluding members who doesn't have the role and bots. This also checks if members have role and is bot and returns reply as such.
 
 ![roleMassRemove.js](https://cdn.discordapp.com/attachments/1149961478372347985/1157493137397264404/Screenshot_20230930_071414_Discord.jpg)
