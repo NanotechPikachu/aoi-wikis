@@ -28,7 +28,7 @@ guild.members.fetch()
    .then((data) => {
     data.forEach((member) => {
      const memHigh = member.roles.highest;
-     if ( member.roles.cache.has(role.id) ) {
+     if ( member.roles.cache.has(role.id) && !member.bot) {
      if (
        userHigh.comparePositionTo(memHigh) > 0 
        && member.manageable
@@ -49,7 +49,7 @@ guild.members.fetch()
  });
  const embed = new EmbedBuilder()
        .setTitle('Process Complete')
-       .setDescription(\`- Role: <@&\${role.id}>\n- **Role removed from:** \${suc} members.\n- **Failed on:** \${er} members.\n- **No of members who does not have the role:** \${ro} members.\`)
+       .setDescription(\`- **Role:** <@&\${role.id}>\n- **Role removed from:** \${suc} members.\n- **Failed on:** \${er} members.\n- **No of members who does not have the role and/or is bot:** \${ro} members.\`)
        .setColor(0x008000)
        .setFooter({ text: \`Time taken: Around \${Math.floor((Date.now()-start)/1000)} seconds.\` });
  int.editReply({ embeds: [embed] }) 
@@ -79,7 +79,3 @@ $suppressErrors[Something went wrong!{options:{ephemeral:true}}{extraOptions:{in
 $onlyIf[$interactionData[options._subcommand]==mass-remove;]
 `
 }]
-
-/*
-If any of you have ideas to make this code better, feel free to ping me or DM me.
-*/
