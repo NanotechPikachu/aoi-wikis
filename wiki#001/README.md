@@ -7,6 +7,7 @@ This is a wiki or snippet of the **role commands.** This included the following 
 - role remove-all
 - role create
 - role mass-add
+- role mass-remove
 
 ## Commands
 Here are the information about the commands in it.
@@ -42,6 +43,9 @@ As the name implies, it's a slash command which adds a role to all the members o
 _(Do check the commentted out portion of the code file as it contains important information.)_
 
 ![roleMassAdd.js](https://cdn.discordapp.com/attachments/1149961478372347985/1153328507494080593/Screenshot_20230918_192529_Discord.jpg)
+
+##Role Mass-Remove
+This is a slash command which removes a role from all the members of a guild
 
 
 **Note**: All the commands are accompanied with error checking and permission checks.
