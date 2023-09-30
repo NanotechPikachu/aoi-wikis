@@ -13,6 +13,7 @@ const userHigh = int.member.roles.highest;
 
 let suc = 0;
 let er = 0;
+let ro = 0;
 
 const emb = new EmbedBuilder()
       .setDescription("The process of role adding has been started. Please wait...")
@@ -21,13 +22,16 @@ const emb = new EmbedBuilder()
 await int.reply({ embeds: [emb] })
 const start = Date.now()
 
-const reason = "Role added by "+int.user.username 
+const reason = "Role mass added by $username" 
 
-for (const member of guild.members.cache) {
-    const memHigh = member[1].roles.highest;
-    if (userHigh.comparePositionTo(memHigh)>0&&member[1].manageable) {
+guild.members.fetch()
+    .then((data) => {
+        data.forEach((member) => {
+    const memHigh = member.roles.highest;
+    if ( !member.roles.cache.has(role.id) && !member.bot ) {
+    if (userHigh.comparePositionTo(memHigh)>0 && member.manageable) {
         try {
-            member[1].roles.add(role, reason)
+            member.roles.add(role, reason)
             suc+=1;
         } catch (err) {
             console.error(err);
@@ -35,14 +39,23 @@ for (const member of guild.members.cache) {
         }
     } else {
         er+=1;
-    } 
-    
-}
+        }
+    } else {
+        ro+=1;
+    }
+
+});
 const embed = new EmbedBuilder()
-      .setDescription(\`**Process Complete**\n\n<@&\${role.id}> has been successfully added to \${suc} and failed on \${er} members\`)
+      .setTitle('Process Complete')
+      .setDescription(\`- **Role:** <@&\${role.id}>\n- **Role added to:** \${suc} members.\n- **Failed on:** \${er} members.\n- **No of members who have the role and/or is bot:** \${ro} members.\`)
       .setColor(0x008000)
       .setFooter({ text: \`Time taken: Around \${Math.floor((Date.now()-start)/1000)} seconds.\` })
-await int.editReply({ embeds: [embed] })
+int.editReply({ embeds: [embed] })
+
+})
+    .catch((e) => {
+       console.error(e)
+   });
 })()
 ]
 
@@ -67,11 +80,5 @@ $onlyIf[$interactionData[options._subcommand]==mass-add;]
 }]
 
 /*
-SOME IMPORTANT INFOS.
-
-I am not a djs coder hence, the code may look little primitive or unconventional but, I can guarantee you 99% that it works. I have tested it around 50 times and it worked(though I got yelled by testing server mates for spam messages). 
-
-The code doesn't count whether you have the role or not. For example, you wanna mass add a role named "X" and 5 out of 20 people in server has the role and 2 have role higher than bot, then it will say "Success in 18 and Failed on 2" as it won't count if member has that role or not.
-
-If you have any ideas to improve my code or know a way to make the djs part better, please DM me(info in README.md). I would be thankful if any of you help me improve my knowledge in djs domain.
+A sincere thanks to ahoemi, Null and Nosey for helping me here
 */
