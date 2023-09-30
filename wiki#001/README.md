@@ -45,7 +45,9 @@ _(Do check the commentted out portion of the code file as it contains important 
 ![roleMassAdd.js](https://cdn.discordapp.com/attachments/1149961478372347985/1153328507494080593/Screenshot_20230918_192529_Discord.jpg)
 
 ##Role Mass-Remove
-This is a slash command which removes a role from all the members of a guild
+This is a slash command which removes a role from all the members of a guild excluding members who doesn't have the role and bots. This also checks if members have role and is bot and returns reply as such.
+
+![roleMassRemove.js](https://cdn.discordapp.com/attachments/1149961478372347985/1157493137397264404/Screenshot_20230930_071414_Discord.jpg)
 
 
 **Note**: All the commands are accompanied with error checking and permission checks.
