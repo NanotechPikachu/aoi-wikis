@@ -3,7 +3,7 @@ module.exports = [{
     aliases: ["gstart", "giveaway-start"],
     code: `
 $djsEval[(async () => {
-const { startGiveaway } = require('/giveawayManager.js');
+const { startGiveaway } = require('functions/giveawayManager.js');
 
 const prize = "$messageSlice[2]";
 const duration = '$message[1]';
