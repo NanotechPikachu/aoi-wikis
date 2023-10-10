@@ -1,4 +1,3 @@
-
 module.exports = [{
     name: "giveaway end",
     aliases: ["gw-end", "gend"],
