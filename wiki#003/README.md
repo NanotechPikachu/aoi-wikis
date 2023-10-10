@@ -58,11 +58,11 @@ Giveaway End:
 
 ### Image Gallery
 
-On start
+On Start:
 
 ![giveawayStart](https://cdn.discordapp.com/attachments/1149961478372347985/1160100749250928721/Screenshot_20231007_115540_Discord.jpg)
 
-On End
+On End:
 
 ![GiveawayEnd](https://cdn.discordapp.com/attachments/1149961478372347985/1160100773519183912/Screenshot_20231007_115554_Discord.jpg)
 
