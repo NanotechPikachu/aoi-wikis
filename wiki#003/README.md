@@ -2,7 +2,7 @@
 
 This is a wiki or snippet of the **giveaway system** made by me.
 
-[WEBSITE LINK](https://nanotech-wikis.ver el.app/code/giveaway)
+[WEBSITE](https://nanotech-wikis.ver el.app/code/giveaway)
 
 ### Current features(V3.2)
 
