@@ -45,7 +45,7 @@ Giveaway Start:
 | Prize | String | Nitro basic, boost, etc |
 
 **Syntax**: `giveaway start {time} {winners} {prize}`
-:br
+
 Giveaway End:
 
 | Option | Type | Example |
@@ -53,5 +53,15 @@ Giveaway End:
 | messageID | Number | A valid message ID |
 
 **Syntax**: `giveaway end {messageID}`
+
+### Image Gallery
+
+![giveawayStart]()
+
+![GiveawayEnd]()
+
+That's all for now.
+
+But don't go anywhere as the project is still on and more functions will come soon as I have much more in my To-Do list.
 
 
