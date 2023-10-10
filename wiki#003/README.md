@@ -34,4 +34,24 @@ You have to put all the files in the `functions` folder of this repo to any othe
 > [!NOTE]
 > The functions will be imported or called into our code. As such we use the `require()`. But, I only have given you an example of the require and hence, you need to change the file path of the require for the code to work as per your hosting service. **THE GIVEN PATH WON'T WORK!**
 
+### Table
+
+Giveaway Start:
+
+| Option | Type | Example |
+| ------ | ---- | ------- |
+| Time | Parsable Time | `1m/1d/1h/1w` |
+| Winners | Number | Any natural number |
+| Prize | String | Nitro basic, boost, etc |
+
+**Syntax**: `giveaway start {time} {winners} {prize}`
+:br
+Giveaway End:
+
+| Option | Type | Example |
+| ------ | ---- | ------- |
+| messageID | Number | A valid message ID |
+
+**Syntax**: `giveaway end {messageID}`
+
 
