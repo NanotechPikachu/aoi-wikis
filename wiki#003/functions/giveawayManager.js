@@ -99,7 +99,7 @@ const { parseDuration } = require('functions/parseDuration.js');
      const details = await getGiveawayDetails(giveawayId); 
   
      if (!details) { 
-       return message.channel.send('Giveaway not found!'); 
+       return message.channel.send('Giveaway already ended / not found!'); 
      } 
   
      const guild = message.guild; 
