@@ -55,7 +55,7 @@ Giveaway End:
 | ------ | ---- | ------- |
 | messageID | Number | A valid message ID |
 
-**Syntax**: `giveaway end {messageID}
+**Syntax**: `giveaway end {messageID}`
 
 Giveaway Reroll:
 
