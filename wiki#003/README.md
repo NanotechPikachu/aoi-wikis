@@ -10,6 +10,7 @@ This is a wiki or snippet of the **giveaway system** made by me.
 - giveaway end(on timeout)
 - giveaway end(on command)
 - storage of data in DB
+- giveaway reroll
 
 ### Installations Needed
 
@@ -31,7 +32,7 @@ The code is split into __two parts__.
 
 Both of them are essential for the giveaway system to work and the functions are the most important or the backbone of the code.
 
-You have to put all the files in the `functions` folder of this repo to any other folder than the `commands` folder where you put aoi commands in your host. The other files like `giveawayStart.js` and `giveawayEnd.js` should be put in the normal `commands` folder.
+You have to put all the files in the `functions` folder of this repo to any other folder than the `commands` folder where you put aoi commands in your host. The other files like `giveawayStart.js`, `giveawayEnd.js` and `giveawayReroll.js` should be put in the normal `commands` folder.
 
 > [!NOTE]
 > The functions will be imported or called into our code. As such we use the `require()`. But, I only have given you an example of the require and hence, you need to change the file path of the require for the code to work as per your hosting service. **THE GIVEN PATH WON'T WORK!**
@@ -54,7 +55,16 @@ Giveaway End:
 | ------ | ---- | ------- |
 | messageID | Number | A valid message ID |
 
-**Syntax**: `giveaway end {messageID}`
+**Syntax**: `giveaway end {messageID}
+
+Giveaway Reroll:
+
+| Option | Type | Example |
+| ------ | ---- | ------- |
+| messageID | Number | A valid message ID |
+| Winners | Number | Any natural number |
+
+**Syntax**: `giveaway reroll {messageID} {winners}`
 
 ### Image Gallery
 
@@ -69,5 +79,5 @@ On End:
 That's all for now.
 
 But don't go anywhere as the project is still on and more functions will come soon as I have much more in my To-Do list.
-
+Check out my website to know my To-Do list and additional information and explanations.
 
