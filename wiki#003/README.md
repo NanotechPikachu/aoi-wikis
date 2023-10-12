@@ -70,7 +70,7 @@ Giveaway Reroll:
 
 On Start:
 
-![giveawayStart](https://cdn.discordapp.com/attachments/1149961478372347985/1160100749250928721/Screenshot_20231007_115540_Discord.jpg)
+![giveawayStart](https://cdn.discordapp.com/attachments/1110083236736024577/1161834662675615786/Screenshot_20231011_191253_Discord.jpg)
 
 On End:
 
