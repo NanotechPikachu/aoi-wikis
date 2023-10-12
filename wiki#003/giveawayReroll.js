@@ -3,7 +3,7 @@ module.exports = [{
      aliases: ["gw-reroll", "greroll"], 
      code: ` 
  $djsEval[(async () => { 
- const { rerollGiveaway } = require('/home/container/giveawayManager.js'); 
+ const { rerollGiveaway } = require('functions/giveawayManager.js'); 
  const giveawayId = "$message[1]"; 
  const winnersCount = "$message[2]"; 
   
