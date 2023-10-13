@@ -159,6 +159,32 @@ const sqlite3 = require('sqlite3').verbose();
    }); 
  } 
   
+ //get active giveaways 
+ async function getActiveGiveaways(guildId, currentTime) { 
+     return new Promise((resolve, reject) => { 
+     db.all('SELECT * FROM giveawaysAll WHERE guildId = ? AND endTime > ?', [guildId, currentTime], (err, activeGiveaways) => { 
+       if (err) { 
+         reject(err); 
+       } else { 
+           resolve(activeGiveaways); 
+        } 
+     }); 
+  }); 
+ } 
+  
+ //get ended giveaways 
+ async function getEndedGiveaways(guildId, currentTime) { 
+   return new Promise((resolve, reject) => { 
+       db.all('SELECT * FROM giveawaysAll WHERE guildId = ? AND endTime <= ?', [guildId, currentTime], (err, endedGiveaways) => { 
+           if (err) { 
+               reject(err); 
+           } else { 
+               resolve(endedGiveaways); 
+           } 
+       }); 
+   }); 
+ } 
+  
  module.exports = { 
    addUserToGiveawayDB, 
    fetchParticipantsFromDB, 
@@ -168,4 +194,6 @@ const sqlite3 = require('sqlite3').verbose();
    removeWinnersFromDB, 
    getAllGiveawaysInfo, 
    fetchParticipantsAll, 
+   getEndedGiveaways, 
+   getActiveGiveaways, 
  };
