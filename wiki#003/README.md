@@ -4,13 +4,14 @@ This is a wiki or snippet of the **giveaway system** made by me.
 
 **[WEBSITE LINK](https://nanotech-wikis.vercel.app/code/giveaway)**
 
-### Current features(v3.4)
+### Current features(v3.5)
 
 - giveaway start
 - giveaway end(on timeout)
 - giveaway end(on command)
 - storage of data in DB
 - giveaway reroll
+- giveaway list(active and ended)
 
 ### Installations Needed
 
@@ -66,6 +67,11 @@ Giveaway Reroll:
 
 **Syntax**: `giveaway reroll {messageID} {winners}`
 
+Giveaway List:
+
+**Syntax**: `giveaway list`
+
+
 ### Image Gallery
 
 On Start:
@@ -74,7 +80,11 @@ On Start:
 
 On End:
 
-![GiveawayEnd](https://cdn.discordapp.com/attachments/1149961478372347985/1160100773519183912/Screenshot_20231007_115554_Discord.jpg)
+![giveawayEnd](https://cdn.discordapp.com/attachments/1149961478372347985/1160100773519183912/Screenshot_20231007_115554_Discord.jpg)
+
+List:
+
+![giveawayList](https://cdn.discordapp.com/attachments/1110083236736024577/1162303370980237384/Screenshot_20231013_134748_Discord.jpg)
 
 That's all for now.
 
