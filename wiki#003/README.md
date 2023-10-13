@@ -33,7 +33,7 @@ The code is split into __two parts__.
 
 Both of them are essential for the giveaway system to work and the functions are the most important or the backbone of the code.
 
-You have to put all the files in the `functions` folder of this repo to any other folder than the `commands` folder where you put aoi commands in your host. The other files like `giveawayStart.js`, `giveawayEnd.js` and `giveawayReroll.js` should be put in the normal `commands` folder.
+You have to put all the files in the `functions` folder of this repo to any other folder than the `commands` folder where you put aoi commands in your host. The other files like `giveawayStart.js`, `giveawayEnd.js`, `giveawayList.js` and `giveawayReroll.js` should be put in the normal `commands` folder.
 
 > [!NOTE]
 > The functions will be imported or called into our code. As such we use the `require()`. But, I only have given you an example of the require and hence, you need to change the file path of the require for the code to work as per your hosting service. **THE GIVEN PATH WON'T WORK!**
