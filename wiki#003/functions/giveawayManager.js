@@ -1,5 +1,5 @@
 const { parseDuration } = require('functions/parseDuration.js'); 
- const { addGiveaway, addUserToGiveawayDB, fetchParticipantsFromDB, deleteGiveaway, getGiveawayDetails, removeWinnersFromDB, getAllGiveawaysInfo, fetchParticipantsAll } = require('functions/giveawayDB.js'); 
+ const { addGiveaway, addUserToGiveawayDB, fetchParticipantsFromDB, deleteGiveaway, getGiveawayDetails, removeWinnersFromDB, getAllGiveawaysInfo, fetchParticipantsAll, getActiveGiveaways, getEndedGiveaways } = require('functions/giveawayDB.js'); 
  const { EmbedBuilder } = require('discord.js'); 
   
  //Start the giveaway  
@@ -231,8 +231,49 @@ const { parseDuration } = require('functions/parseDuration.js');
    } 
  } 
   
+ //giveaway list embed function 
+ async function createGiveawayEmbed(giveaways, title) {    
+     const w = []; 
+     let i = 0; 
+     for (const giveaway of giveaways) { 
+       i +=1; 
+       const endTime = new Date(giveaway.endTime); 
+       w.push(`\n\n${i} | ${giveaway.id} | ${giveaway.prize} | <t:${Math.floor(endTime/1000)}:f>`) 
+        } 
+     const em = new EmbedBuilder() 
+       .setTitle(title) 
+       .setColor(0x800080) 
+       .setDescription(`** S No. |        ID        |      Prize      |     End Time   |**${w}`) 
+    return em; 
+ } 
+  
+ //giveaway list function 
+ async function giveawaysList(message) { 
+   const guildId = message.guild.id; 
+   const currentTime = Date.now(); 
+  
+   const activeGiveaways = await getActiveGiveaways(guildId, currentTime); 
+   const endedGiveaways = await getEndedGiveaways(guildId, currentTime); 
+  
+   if (activeGiveaways.length > 0) { 
+       const em = await createGiveawayEmbed(activeGiveaways, 'Active Giveaways'); 
+       message.channel.send({ embeds: [em] }); 
+   } else { 
+       message.channel.send('No active giveaways!'); 
+   } 
+  
+   if (endedGiveaways.length > 0) { 
+       const emb = await createGiveawayEmbed(endedGiveaways, 'Ended Giveaways'); 
+       message.channel.send({ embeds: [emb] }); 
+    } else { 
+       message.channel.send('No ended giveaways'); 
+    } 
+ } 
+  
+  
  module.exports = { 
    startGiveaway, 
    stopGiveaway, 
    rerollGiveaway, 
+   giveawaysList, 
  };
