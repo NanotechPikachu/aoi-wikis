@@ -4,7 +4,7 @@ This is a wiki or snippet of the **giveaway system** made by me.
 
 **[WEBSITE LINK](https://nanotech-wikis.vercel.app/code/giveaway)**
 
-### Current features(v3.5)
+### Current features(v3.6)
 
 - giveaway start
 - giveaway end(on timeout)
@@ -12,6 +12,7 @@ This is a wiki or snippet of the **giveaway system** made by me.
 - storage of data in DB
 - giveaway reroll
 - giveaway list(active and ended)
+- giveaway cancel
 
 ### Installations Needed
 
@@ -70,6 +71,15 @@ Giveaway Reroll:
 Giveaway List:
 
 **Syntax**: `giveaway list`
+
+Giveaway Cancel:
+
+| Option | Type | Example |
+| ------ | ---- | ------- |
+| messageID | Number | A valid message ID |
+| Reason | String | Any string as reason |
+
+**Syntax**: `giveaway cancel {messageID} {reason}`
 
 
 ### Image Gallery
