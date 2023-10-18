@@ -1,5 +1,5 @@
 const { parseDuration } = require('functions/parseDuration.js');
-const { addGiveaway, addUserToGiveawayDB, fetchParticipantsFromDB, deleteGiveaway, getGiveawayDetails, removeWinnersFromDB, getAllGiveawaysInfo, fetchParticipantsAll, getActiveGiveaways, getEndedGiveaways, deletePermanentDB } = require('functions/giveawayDB.js');
+const { addGiveaway, addUserToGiveawayDB, fetchParticipantsFromDB, deleteGiveaway, getGiveawayDetails, removeWinnersFromDB, getAllGiveawaysInfo, fetchParticipantsAll, getActiveGiveaways, getEndedGiveaways, deletePermanentDB } = require('/home/container/functionsJS/giveawayDB.js');
 const { EmbedBuilder } = require('discord.js');
 
 //Start the giveaway 
@@ -54,6 +54,13 @@ async function startGiveaway(prize, duration, message, winnersCount, host) {
     const winners = [];
     const win = [];
 
+    //dm embed
+    const e = new EmbedBuilder()
+      .setTitle('Congratulations!')
+      .setDescription(`You have won the giveaway for **${details.prize}!**\nThis needs your immediate attention as **a rerolled prize will never come back!** | [Giveaway Link](https://discord.com/channels/${details.guildId}/${details.channelId}/${giveawayMessage.id})`)
+      .setColor(0xFFC0CB)
+      
+
     // Winner selection
     for (let i = 0; i < winnersCount; i++) {
       if (participantsArray.length === 0) {
@@ -74,6 +81,10 @@ async function startGiveaway(prize, duration, message, winnersCount, host) {
       await removeWinnersFromDB(giveawayMessage.id, win);
       await giveawayMessage.edit({ embeds: [embedWin] });
       await giveawayMessage.reply(`**Congratulations to ${winners.join(', ')} for winning!**`);
+      win.forEach((u) => {
+        const user = message.guild.members.cache.get(u);
+        user.send({ embeds: [e] })
+      });
     } else {
       await giveawayMessage.edit({ embeds: [embed] });
     }
@@ -127,6 +138,12 @@ async function stopGiveaway(giveawayId, message) {
     const winners = [];
     const win = [];
 
+    //dm embed
+    const e = new EmbedBuilder()
+      .setTitle('Congratulations!')
+      .setDescription(`You have won the giveaway for **${details.prize}!**\nThis needs your immediate attention as **a rerolled prize will never come back!** | [Giveaway Link](https://discord.com/channels/${details.guildId}/${details.channelId}/${giveawayId})`)
+      .setColor(0xFFC0CB)
+
     // Winner selection
     for (let i = 0; i < winnersCount; i++) {
       if (participantsArray.length === 0) {
@@ -147,6 +164,10 @@ async function stopGiveaway(giveawayId, message) {
       await removeWinnersFromDB(giveawayMessage.id, win);
       await giveawayMessage.edit({ embeds: [embedWin] });
       await giveawayMessage.reply(`**Congratulations to ${winners.join(', ')} for winning!**`);
+      win.forEach((u) => {
+        const user = guild.members.cache.get(u);
+        user.send({ embeds: [e] })
+      });
     } else {
       await giveawayMessage.edit({ embeds: [embed] });
     }
@@ -199,6 +220,13 @@ async function rerollGiveaway(giveawayId, winnersCount, message) {
     const winners = [];
     const win = [];
 
+    //dm embed
+    const e = new EmbedBuilder()
+      .setTitle('Congratulations!')
+      .setDescription(`You have won the giveaway for **${details.prize}!**\nThis needs your immediate attention as **a rerolled prize will never come back!** | [Giveaway Link](https://discord.com/channels/${details.guildId}/${details.channelId}/${giveawayId})`)
+      .setColor(0xFFC0CB)
+      
+
     // Winner selection
     for (let i = 0; i < winnersCount; i++) {
       if (participantsArray.length === 0) {
@@ -219,6 +247,10 @@ async function rerollGiveaway(giveawayId, winnersCount, message) {
       await removeWinnersFromDB(giveawayMessage.id, win);
       await giveawayMessage.edit({ embeds: [embedWin] });
       await giveawayMessage.reply(`**Congratulations to ${winners.join(', ')} for winning!**`);
+      win.forEach((u) => {
+        const user = guild.members.cache.get(u);
+        user.send({ embeds: [e] })
+      });
     } else {
       await giveawayMessage.edit({ embeds: [embed] });
     }
