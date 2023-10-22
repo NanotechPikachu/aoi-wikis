@@ -6,9 +6,9 @@ const db = new sqlite3.Database('giveaways.db');
 // Create the participants table if it doesn't exist
 db.serialize(() => {
   db.run('CREATE TABLE IF NOT EXISTS participants (giveawayId TEXT, userId TEXT)');
-  db.run("CREATE TABLE IF NOT EXISTS giveaways (id TEXT PRIMARY KEY, guildId TEXT, channelId TEXT, prize TEXT, endTime INTEGER, winnerCount INTEGER)");
+  db.run("CREATE TABLE IF NOT EXISTS giveaways (id TEXT PRIMARY KEY, guildId TEXT, channelId TEXT, prize TEXT, endTime INTEGER, winnerCount INTEGER, hoster TEXT)");
   db.run('CREATE TABLE IF NOT EXISTS participantsAll (giveawayId TEXT, userId TEXT)');
-  db.run("CREATE TABLE IF NOT EXISTS giveawaysAll (id TEXT PRIMARY KEY, guildId TEXT, channelId TEXT, prize TEXT, endTime INTEGER, winnerCount INTEGER)");
+  db.run("CREATE TABLE IF NOT EXISTS giveawaysAll (id TEXT PRIMARY KEY, guildId TEXT, channelId TEXT, prize TEXT, endTime INTEGER, winnerCount INTEGER, hoster TEXT)");
 });
 
 // Function to add a user to the database when they enter a giveaway
@@ -69,12 +69,12 @@ function deleteGiveaway(giveawayId) {
 
 
 //function which adds a giveaway to both the DB
-function addGiveaway(giveawayId, guildId, channelId, prize, endTime, winnerCount) {
-  const stmt = db.prepare("INSERT INTO giveaways VALUES (?, ?, ?, ?, ?, ?)");
-  stmt.run(giveawayId, guildId, channelId, prize, endTime, winnerCount);
+function addGiveaway(giveawayId, guildId, channelId, prize, endTime, winnerCount, hoster) {
+  const stmt = db.prepare("INSERT INTO giveaways VALUES (?, ?, ?, ?, ?, ?, ?)");
+  stmt.run(giveawayId, guildId, channelId, prize, endTime, winnerCount, hoster);
   stmt.finalize();
-  const stmt1 = db.prepare("INSERT INTO giveawaysAll VALUES (?, ?, ?, ?, ?, ?)");
-  stmt1.run(giveawayId, guildId, channelId, prize, endTime, winnerCount);
+  const stmt1 = db.prepare("INSERT INTO giveawaysAll VALUES (?, ?, ?, ?, ?, ?, ?)");
+  stmt1.run(giveawayId, guildId, channelId, prize, endTime, winnerCount, hoster);
   stmt1.finalize();
 }
 
@@ -106,7 +106,7 @@ function getGiveawayDetails(giveawayId) {
 //gets all Giveaway details be it be ended or not!
 function getAllGiveawaysInfo(giveawayId) {
   return new Promise((resolve, reject) => {
-    const query = "SELECT guildId, channelId, prize, endTime, winnerCount FROM giveawaysAll WHERE id = ?";
+    const query = "SELECT guildId, channelId, prize, endTime, winnerCount, hoster FROM giveawaysAll WHERE id = ?";
     
     db.get(query, [giveawayId], (err, row) => {
       if (err) {
@@ -118,6 +118,7 @@ function getAllGiveawaysInfo(giveawayId) {
           prize: row.prize,
           endTime: row.endTime,
           winnerCount: row.winnerCount,
+          hoster: row.hoster,
         };
         resolve(giveawayDetails);
       } else {
