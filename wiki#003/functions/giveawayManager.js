@@ -1,5 +1,5 @@
-const { parseDuration } = require('functions/parseDuration.js');
-const { addGiveaway, addUserToGiveawayDB, fetchParticipantsFromDB, deleteGiveaway, getGiveawayDetails, removeWinnersFromDB, getAllGiveawaysInfo, fetchParticipantsAll, getActiveGiveaways, getEndedGiveaways, deletePermanentDB } = require('/home/container/functionsJS/giveawayDB.js');
+const { parseDuration } = require('/functions/parseDuration.js');
+const { addGiveaway, addUserToGiveawayDB, fetchParticipantsFromDB, deleteGiveaway, getGiveawayDetails, removeWinnersFromDB, getAllGiveawaysInfo, fetchParticipantsAll, getActiveGiveaways, getEndedGiveaways, deletePermanentDB } = require('/functions/giveawayDB.js');
 const { EmbedBuilder } = require('discord.js');
 
 //Start the giveaway 
@@ -14,8 +14,9 @@ async function startGiveaway(prize, duration, message, winnersCount, host) {
   const endTime = Date.now() + parseDuration(duration);
   const guildId = message.guild.id;
   const channelId = message.channel.id;
+  const hoster = host;
 
-  addGiveaway(giveawayMessage.id, guildId, channelId, prize, endTime, winnersCount)
+  addGiveaway(giveawayMessage.id, guildId, channelId, prize, endTime, winnersCount, hoster)
 
   // Create a reaction collector for the giveaway message
   const filter = (reaction, user) => reaction.emoji.name === '🎉' && !user.bot;
@@ -83,7 +84,13 @@ async function startGiveaway(prize, duration, message, winnersCount, host) {
       await giveawayMessage.reply(`**Congratulations to ${winners.join(', ')} for winning!**`);
       win.forEach((u) => {
         const user = message.guild.members.cache.get(u);
-        user.send({ embeds: [e] })
+        if (user) {
+          try {
+        user.send({ embeds: [e] });
+          } catch(er) {
+            console.error(er);
+          }
+        }
       });
     } else {
       await giveawayMessage.edit({ embeds: [embed] });
@@ -166,7 +173,13 @@ async function stopGiveaway(giveawayId, message) {
       await giveawayMessage.reply(`**Congratulations to ${winners.join(', ')} for winning!**`);
       win.forEach((u) => {
         const user = guild.members.cache.get(u);
-        user.send({ embeds: [e] })
+        if (user) {
+          try {
+        user.send({ embeds: [e] });
+          } catch(er) {
+            console.error(er)
+          }
+        }
       });
     } else {
       await giveawayMessage.edit({ embeds: [embed] });
@@ -249,7 +262,13 @@ async function rerollGiveaway(giveawayId, winnersCount, message) {
       await giveawayMessage.reply(`**Congratulations to ${winners.join(', ')} for winning!**`);
       win.forEach((u) => {
         const user = guild.members.cache.get(u);
-        user.send({ embeds: [e] })
+        if (user) {
+          try {
+        user.send({ embeds: [e] });
+          } catch(er) {
+            console.error(er)
+          }
+        }
       });
     } else {
       await giveawayMessage.edit({ embeds: [embed] });
@@ -325,10 +344,57 @@ async function cancelGiveaway(giveawayId, reason, message) {
   message.channel.send('Giveaway cancelled!');
 }
 
+// function to get giveaway status
+async function giveawayStatus(giveawayId) {
+  const details = await getAllGiveawaysInfo(giveawayId);
+  
+  if (!details) {
+    return "Giveaway not found or cancelled!";
+  }
+  
+  if (Date.now() < details.endTime) {
+    return "Active";
+  } else {
+    return "Inactive";
+  }
+}
+
+
+// function to get info of a giveaway.
+async function giveawayInfo(giveawayId, message) {
+
+  const details = await getAllGiveawaysInfo(giveawayId);
+  
+  if (!details) {
+    return message.channel.send("Invalid / cancelled giveaway!");
+  }
+  
+  const endTime = new Date(details.endTime);
+  const status = await giveawayStatus(giveawayId);
+  
+  const embed = new EmbedBuilder()
+    .setTitle('Giveaway Info')
+    .setDescription('Here are some insights of the giveaway:')
+    .addFields(
+      {name: 'ID', value: `${giveawayId}`},
+      {name: 'Prize', value: `${details.prize}`},
+      {name: 'Status', value: `${status}`},
+      {name: 'Host', value: `<@${details.hoster}>`},
+      {name: 'Channel', value: `<#${details.channelId}>`},
+      {name: 'End Time', value: `<t:${Math.floor(endTime/1000)}:f>`},
+      )
+    .setColor(0x964B00);
+  
+  await message.channel.send({ embeds: [embed] });   
+  
+}
+
+
 module.exports = {
   startGiveaway,
   stopGiveaway,
   rerollGiveaway,
   giveawaysList,
   cancelGiveaway,
+  giveawayInfo,
 };
