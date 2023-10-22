@@ -4,7 +4,7 @@ This is a wiki or snippet of the **giveaway system** made by me.
 
 **[WEBSITE LINK](https://nanotech-wikis.vercel.app/code/giveaway)**
 
-### Current features(v3.7)
+### Current features(v4.0)
 
 - giveaway start
 - giveaway end(on timeout)
@@ -114,8 +114,12 @@ DM:
 
 ![giveawayDM](https://cdn.discordapp.com/attachments/1110083236736024577/1164122823611121767/Screenshot_20231018_141725_Discord.jpg)
 
+Info:
+
+![giveawayInfo](https://cdn.discordapp.com/attachments/1110083236736024577/1165485508663709756/Screenshot_20231022_083300_Discord.jpg)
+
+
 That's all for now.
 
-But don't go anywhere as the project is still on and more functions will come soon as I have much more in my To-Do list.
-Check out my website to know my To-Do list and additional information and explanations.
+Check out my website to know additional information and explanations.
 
