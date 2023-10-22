@@ -4,7 +4,7 @@ This is a wiki or snippet of the **giveaway system** made by me.
 
 **[WEBSITE LINK](https://nanotech-wikis.vercel.app/code/giveaway)**
 
-### Current features(v4.0)
+### Features(v4.0)
 
 - giveaway start
 - giveaway end(on timeout)
