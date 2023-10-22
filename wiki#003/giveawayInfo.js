@@ -3,7 +3,7 @@ module.exports = {
     aliases: ["ginfo", "gw-info"],
     code: `
 $djsEval[(async () => {
-const { giveawayInfo } = require('/home/container/functionsJS/giveawayManager.js');
+const { giveawayInfo } = require('/functions/giveawayManager.js');
 
 const giveawayId = "$message[1]";
 
