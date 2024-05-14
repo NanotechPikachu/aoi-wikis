@@ -90,6 +90,13 @@ async function getParticipants(giveawayId) {
     return dat?.participants;
 };
 
+/*
+  FUNCTION: getActiveGiveaways()
+  USE: To get an Array of active giveaways from MongoDB.
+  PARAMS:
+    !N/A!
+*/
+
 async function getActiveGiveaways() {
     const dat = await Giveaway.find({
         type: "giveaway",
@@ -97,6 +104,15 @@ async function getActiveGiveaways() {
     });
     return dat;
 };
+
+/*
+  FUNCTION: endGiveaway()
+  USE: To end a giveaway by editing the status in MongoDB data.
+  PARAMS:
+    'giveawayId': | Type: 'String' |
+    'channelId': | Type: 'String' |
+    'status': | Type: 'String' | Choices: ['stopped', 'ended', 'active(not applicable here)', 'cancelled'] |
+*/
 
 async function endGiveaway(giveawayId, channelId, status) {
     const gw = await Giveaway.findOne({
@@ -117,6 +133,13 @@ async function endGiveaway(giveawayId, channelId, status) {
     return true;
 };
 
+/*
+  FUNCTION: getGiveaway()
+  USE: To get a giveaway data from MongoDB using giveawayId.
+  PARAMS:
+    'giveawayId': | Type: 'String' |
+*/
+
 async function getGiveaway(giveawayId) {
     const a = await Giveaway.findOne({
         giveawayId: giveawayId,
@@ -124,6 +147,14 @@ async function getGiveaway(giveawayId) {
     }); 
     return a;
 };
+
+/*
+  FUNCTION: fetchGiveaways()
+  USE: To fetch all giveaways available in a guild respective to their status from MongoDB which returns an Array.
+  PARAMS:
+    'guildId': | Type: 'String' |
+    'status': | Type: 'String' | Choices: ['stopped', 'ended', 'active', 'cancelled'] |
+*/
 
 async function fetchGiveaways(guildId, status) {
     const a = await Giveaway.find({
