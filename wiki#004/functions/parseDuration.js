@@ -5,7 +5,6 @@
     'duration': | Type: 'String' |
 */
 
-
 function parseDuration(duration) {
   const regex = /(\d+)([smhdw])/;
   const match = duration.match(regex);
