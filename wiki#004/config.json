@@ -1,0 +1,4 @@
+{
+    "token": "DISCORD_BOT_TOKEN",
+    "mongo_uri": "MONGO_URI"
+}
