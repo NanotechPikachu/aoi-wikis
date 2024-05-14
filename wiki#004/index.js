@@ -11,6 +11,7 @@ const {
       mongo_uri 
     } = require('./config.json');
 
+// Intents and Client intitalization
 const client = new Client({ intents: [
   GatewayIntentBits.Guilds,
   GatewayIntentBits.GuildMessages,
@@ -30,7 +31,6 @@ mongoose.connect(mongo_uri)
   .catch((err) => console.log(`DB connection failed: ${err}`));
 
 // Import some necessary GIVEAWAY_FUNCTION
-
 const { stopGiveaway } = require('./functions/giveawayManager.js');
 const { getActiveGiveaways } = require('./functions/giveawayDB.js');
 
