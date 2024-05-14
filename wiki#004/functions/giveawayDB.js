@@ -18,20 +18,28 @@ const Participants = require('../schema/participants.js');
 async function addGiveaway(giveawayId, guildId, channelId, prize, endTime, winnerCount, hoster) {
     await Giveaway.findOneAndUpdate(
         {
-        	giveawayId: giveawayId,
-            type: "giveaway"
+          giveawayId: giveawayId,
+          type: "giveaway"
         }, {
-            $set: {
-        		guildId: guildId, 
-                status: "active",
+          $set: {
+        	 	guildId: guildId, 
+          status: "active",
        	 		channelId: channelId, 
-        		prize: prize, 
-        		endTime: endTime, 
-        		winnerCount: winnerCount, 
-        		hoster: hoster
+         		prize: prize, 
+        	 	endTime: endTime, 
+         		winnerCount: winnerCount, 
+         		hoster: hoster
     		}
         }, { upsert: true, new: true });
 };
+
+/*
+  FUNCTION: addParticipant()
+  USE: To add a participant(user) to MongoDB data of the giveaway.
+  PARAMS:
+    'giveawayId': | Type: 'String' |
+    'user': | Type: 'String' |
+*/
 
 async function addParticipant(giveawayId, user) {
     await Participants.findOneAndUpdate(
@@ -45,10 +53,18 @@ async function addParticipant(giveawayId, user) {
         }, { upsert: true, new: true });
 };
 
+/*
+  FUNCTION: removeParticipant()
+  USE: To remove a participant(user) to MongoDB data of the giveaway.
+  PARAMS:
+    'giveawayId': | Type: 'String' |
+    'user': | Type: 'String' |
+*/
+
 async function removeParticipant(giveawayId, user) {
     await Participants.findOneAndUpdate(
         {
-        	giveawayId: giveawayId,
+        	    giveawayId: giveawayId,
             type: "giveaway-p"
         }, {
             $pull: {
@@ -56,6 +72,13 @@ async function removeParticipant(giveawayId, user) {
             }
         }, { upsert: true, new: true });
 };
+
+/*
+  FUNCTION: getParticipants()
+  USE: To get the participants of a giveaway from MongoDB.
+  PARAMS:
+    'giveawayId': | Type: 'String' |
+*/
 
 async function getParticipants(giveawayId) {
     const dat = await Participants.findOne(
