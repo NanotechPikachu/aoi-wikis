@@ -4,7 +4,7 @@ const Participants = require('../schema/participants.js');
 
 /*
   FUNCTION: addGiveaway()
-  USAGE: To add a giveaway to MongoDB with its Data.
+  USE: To add a giveaway to MongoDB with its Data.
   PARAMS:
     'giveawayId': | Type: 'String' |
     'guildId': | Type: 'String' |
