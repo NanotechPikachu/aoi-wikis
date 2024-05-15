@@ -1,7 +1,7 @@
 module.exports = [{
     name: "giveaway auto stop",
     type: "loop",
-    channel: "1123543013470240788",
+    channel: "1123543013470240788", // CHANGE IT TO YOUR ERROR CHANNEL
     executeOnStartup: true,
     every: 10 * 1000,
     code: `
