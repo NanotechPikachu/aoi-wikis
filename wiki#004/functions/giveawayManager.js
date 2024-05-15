@@ -223,3 +223,46 @@ async function cancelGiveaway(interaction, channelId, giveawayId) {
         return console.error(`Error in func cancelGiveaway: ${err}`);
     };
 };
+
+async function rerollGiveaway(interaction, giveawayId, channelId, count) {
+    try {
+    const n = await interaction.guild.channels.cache.get(channelId);
+    if (!n) return false;
+    const p = await getParticipants(giveawayId);
+    const gw = await getGiveaway(giveawayId);
+    const m = await n.messages.fetch(giveawayId);
+   
+    if (!gw || !m || gw?.status === "active") return false;
+    if (gw && m) {
+      const j = chooseWinner(count, p);
+      const a = new ActionRowBuilder()
+     	 .addComponents(
+   	 	  new ButtonBuilder()
+     	   .setLabel(`🎉 ${p?.length + (j?.length || 0) || 0}`)
+      	   .setCustomId('join-gw')
+      	   .setDisabled(true)
+       	   .setStyle(ButtonStyle.Primary)
+        );
+      let em; 
+      if (j?.length > 0) {
+        j.forEach((x) => {
+            removeParticipant(giveawayId, x);
+        });
+       m.reply(`Congratulations to winner(s) ${j?.join(", ")}`).catch((err) => console.error(err));
+       em = new EmbedBuilder()
+          .setTitle(`Giveaway Ended!`)
+          .setDescription(`**Giveaway Prize:** ${gw?.prize}\n**Winner(s):** ${j?.join(', ')}`)
+          .setColor(0xFFA500);
+    } else {
+        em = new EmbedBuilder()
+          .setTitle('Giveaway Ended!')
+          .setDescription(`**Giveaway Prize:** ${gw?.prize}\n**Winner(s):** No eligible participants.`)
+          .setColor(0xFFA500);
+    };
+    m.edit({ embeds: [em], components: [a] }).catch((err) => console.error(err));
+    };
+    return true;
+    } catch (err) {
+        return console.error(`Error in func rerollGiveaway: ${err}`);
+    };
+};
