@@ -25,7 +25,7 @@ npm install mongoose
 
 > [!NOTE]
 > This code works **only for AoiJS Bots.**. 
-> This has been tested on aoi.js - v6.7.1 and mongoose - v8.3.2
+> This has been tested on aoi.js - v6.7.1, discord.js - 14.14.1 and mongoose - v8.3.2
 
 <hr />
 
