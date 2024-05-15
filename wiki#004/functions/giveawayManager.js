@@ -119,7 +119,7 @@ async function participant(interaction) {
     'guildId': | Type: 'String' |
     'giveawayId': | Type: 'String' |
     'channelId': | Type: 'String' |
-    'status': | Type: 'String' | Choices: ['ended', 'stopped', 'active(not applicable here)', 'cancelled(not applicable here)']
+    'status': | Type: 'String' | Choices: ['ended', 'stopped', 'active(not applicable here)', 'cancelled(not applicable here)'] |
 */
 
 };
@@ -224,6 +224,16 @@ async function cancelGiveaway(interaction, channelId, giveawayId) {
     };
 };
 
+/*
+  FUNCTION: rerollGiveaway()
+  USE: To reroll an already ended giveaway.
+  PARAMS:
+    'interaction': | Type: 'Object' |
+    'giveawayId': | Type: 'String' |
+    'channelId': | Type: 'String' |
+    'count': | Type: 'Number' |
+*/
+
 async function rerollGiveaway(interaction, giveawayId, channelId, count) {
     try {
     const n = await interaction.guild.channels.cache.get(channelId);
@@ -241,12 +251,12 @@ async function rerollGiveaway(interaction, giveawayId, channelId, count) {
      	   .setLabel(`🎉 ${p?.length + (j?.length || 0) || 0}`)
       	   .setCustomId('join-gw')
       	   .setDisabled(true)
-       	   .setStyle(ButtonStyle.Primary)
+       	  .setStyle(ButtonStyle.Primary)
         );
       let em; 
       if (j?.length > 0) {
         j.forEach((x) => {
-            removeParticipant(giveawayId, x);
+            removeParticipant(giveawayId, x?.replace('<@', '')?.replace('>', '')?.trim());
         });
        m.reply(`Congratulations to winner(s) ${j?.join(", ")}`).catch((err) => console.error(err));
        em = new EmbedBuilder()
@@ -264,5 +274,36 @@ async function rerollGiveaway(interaction, giveawayId, channelId, count) {
     return true;
     } catch (err) {
         return console.error(`Error in func rerollGiveaway: ${err}`);
+    };
+};
+
+/*
+  FUNCTION: listGiveaways()
+  USE: To return a list of giveaway depending on status in embed.
+  PARAMS:
+    'interaction': | Type: 'Object' |
+    'status': | Type: 'String' | Choices: ['ended', 'stopped', 'active', 'cancelled'] |
+*/
+
+async function listGiveaways(interaction, status) {
+    try {
+    const g = await fetchGiveaways(interaction.guild.id, status);
+    let l = [];
+    let i = 1;
+    if (g?.length > 0) {
+      for (const o of g) {
+         if (i > 25) break;
+         l.push(`${i} | **ID: **${o?.giveawayId} | **Prize:**${o?.prize}`);
+         i++;
+      };
+    };
+    
+    const em = new EmbedBuilder()
+      .setTitle(`Giveaways List - ${status}`)
+      .setDescription(`${l?.length > 0 ? l?.join("\n") : "N/A"}`)
+      .setColor(0xFFA500);
+    interaction.followUp({ embeds: [em] });
+    } catch (err) {
+        return console.error(`Error in func listGiveaways: ${err}`);
     };
 };
