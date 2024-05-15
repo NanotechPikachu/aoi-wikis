@@ -183,3 +183,43 @@ async function stopGiveaway(client, guildId, giveawayId, channelId, status) {
         return console.error(`Error in func stopGiveaway: ${err}`);
     };
 };
+
+/*
+  FUNCTION: cancelGiveaway()
+  USE: To cancel a giveaway and doesn't return winners.
+  PARAMS:
+    'interaction': | Type: 'Object' |
+    'channelId': | Type: 'String' |
+    'giveawayId': | Type: 'String' |
+*/
+
+async function cancelGiveaway(interaction, channelId, giveawayId) {
+    const status = "cancelled";
+    try {
+    const channel = interaction.guild.channels.cache.get(channelId);
+    if (!channel) return false;
+    const gw = await getGiveaway(giveawayId);
+    const m = await channel.messages.fetch(giveawayId);
+    const p = await getParticipants(giveawayId);
+    if (!gw || !m) return false;
+    if (gw?.status !== "active") return false;
+    const dat = await endGiveaway(giveawayId, channelId, status);
+    if (!dat) return false;
+    const a = new ActionRowBuilder()
+     	 .addComponents(
+   	 	  new ButtonBuilder()
+     	   .setLabel(`🎉 ${p?.length || 0}`)
+      	   .setCustomId('join-gw')
+      	   .setDisabled(true)
+       	   .setStyle(ButtonStyle.Primary)
+        );
+    const em = new EmbedBuilder()
+    	.setTitle('Giveaway Cancelled!')
+    	.setDescription(`**Giveaway Prize:** ${gw?.prize}\n**Winner(s):** None (due to cancellation).`)
+    	.setColor(0xFFA500);
+    m.edit({ embeds: [em], components: [a] });
+    return true;
+    } catch (err) {
+        return console.error(`Error in func cancelGiveaway: ${err}`);
+    };
+};
