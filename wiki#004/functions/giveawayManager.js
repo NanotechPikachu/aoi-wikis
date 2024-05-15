@@ -163,7 +163,7 @@ async function stopGiveaway(client, guildId, giveawayId, channelId, status) {
                      .setStyle(ButtonStyle.Link)
                 );
         if (user) user.send({ embeds: [emb], components: [act] }).catch((er) => console.error(er));
- removeParticipant(giveawayId, x)
+ removeParticipant(giveawayId, x?.replace('<@', '')?.replace('>', '')?.trim())
         });
        m.reply(`Congratulations to winner(s) ${j?.join(", ")}`).catch((err) => console.error(err));
        em = new EmbedBuilder()
