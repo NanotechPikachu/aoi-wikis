@@ -307,3 +307,57 @@ async function listGiveaways(interaction, status) {
         return console.error(`Error in func listGiveaways: ${err}`);
     };
 };
+
+/*
+  FUNCTION: infoGiveaway()
+  USE: To get info of a giveaway in embed.
+  PARAMS:
+    'interaction': | Type: 'Object' |
+    'giveawayId': | Type: 'String' |
+*/
+
+async function infoGiveaway(interaction, giveawayId) {
+    try {
+    const a = await getGiveaway(giveawayId);
+    if (!a) return await interaction.followUp("Invalid giveaway message ID");
+    const em = new EmbedBuilder()
+      .setTitle('Giveaway Info')
+      .setDescription(`**Giveaway ID**: ${a?.giveawayId}\n**Prize:** ${a?.prize}\n**Host:** ${a?.hoster}\n**End Time:** <t:${Math.floor((a?.endTime)/1000)}:f>\n**Status:** ${a?.status}`)
+      .setColor(0xFFA500)
+    return await interaction.followUp({ embeds: [em] });
+    } catch (err) {
+        return console.error(`Error in func infoGiveaway: ${err}`);
+    };
+};
+
+/*
+  FUNCTION: chooseWinner()
+  USE: To choose a random winner(depending on count passed) from the giveaway participants DB.
+  PARAMS:
+    'count': | Type: 'Number' |
+    'w': | Type: 'Array' |
+*/
+
+function chooseWinner(count, w) {
+  // the 'w' param has the Array of participants.
+    const winners = [];
+    for (let i = 0; i < count; i++) {
+      if (w?.length === 0 || !w) {
+        break;
+      };
+      const randomIndex = Math.floor(Math.random() * w?.length);
+      const winner = w?.splice(randomIndex, 1)[0];
+      winners.push(`<@${winner}>`);
+    };
+    return winners;
+};
+
+module.exports = {
+    startGiveaway,
+    participant,
+    stopGiveaway,
+    cancelGiveaway,
+    rerollGiveaway,
+    listGiveaways,
+    infoGiveaway
+};
